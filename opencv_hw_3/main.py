@@ -62,12 +62,10 @@ def hsvCallback(event, x, y, flags, param):
             and circle_min[0] <= x <= circle_max[0] \
             and circle_min[1] <= y <= circle_max[1] \
             and (((x - circle_center[0]) * (x - circle_center[0]) + (y - circle_center[1]) * (y - circle_center[1])) <= (circle_radius * circle_radius)):
-        # and ((x - circle_center[0]) ** 2) + ((y - circle_center[1]) ** 2) <= circle_radius ** 2:
         im = np.concatenate((np.concatenate((img_circle, interval_space), axis=1), value_bar), axis=1)
         cv2.circle(im, (x, y), 3, (0, 0, 0), thickness=1)
         circle_x, circle_y = x, y
         h = get_angle((x, y), circle_center) / 2 / np.pi * 180
-        # print("h", h)
         s = get_distance((x, y), circle_center) / circle_radius * 255
         draw_value_bar(im, h, s, line_min, line_max)
     elif h != np.nan \

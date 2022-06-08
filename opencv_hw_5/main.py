@@ -12,7 +12,6 @@ noised = image.copy()
 
 
 def process():
-    # Noising image
     global noised
     noised = image.copy()
     level = lev
